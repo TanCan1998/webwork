@@ -2,22 +2,22 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>删除 | 博客 </title>
+  <title>新增 | 博客 </title>
 </head>
 <body>
 
 <?php   
+
     require_once'./inc/db.php';
     require_once './inc/common.php';
 
-    $id = $_POST['id'];
-    $sql = " delete from posts where id = '{$id}' ";
+    $sql = "INSERT INTO posts (title, body)VALUES('$_POST[title]','$_POST[body]')";
 
     if(!mysqli_query($db,$sql)){
         echo mysqli_error($db);
         echo '<br>' . $sql;
     }else{
-        redirect_to("./index.html");
+        redirect_to("./");
     };
 
 ?>

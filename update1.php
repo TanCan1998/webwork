@@ -7,20 +7,17 @@
 <body>
 
 <?php   
-
-    mysql_connect('127.0.0.1','root','root') or die('can`t work');
-    mysql_query("SET NAMES utf8");    
-    mysql_select_db('blog');
+    require_once'./inc/db.php';
+    require_once './inc/common.php';
 
     $id = $_POST['id'];
     $sql = " update posts set title = '{$_POST["title"]}',body= '{$_POST["body"]}' where id = '{$id}' ";
 
-    if(!mysql_query($sql)){
-    	echo mysql_errno();
+    if(!mysqli_query($db,$sql)){
+    	echo mysqli_error($db);
     	echo '<br>' . $sql;
     }else{
-        header("HTTP/1.1 301 Moved Permanently");
-        header("Location: show.php?id={$id}");
+        redirect_to("./show.php?id={$id}");
     };
 
 ?>

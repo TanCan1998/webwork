@@ -6,14 +6,12 @@
 </head>
 <body>
   <?php        
-    mysql_connect('127.0.0.1','root','root') or die('can`t work');
-    mysql_query("SET NAMES utf8");    
-    mysql_select_db('blog');
+    require_once'./inc/db.php';
 
     $id = $_GET['id'];
     $sql = 'select * from posts where id = '.$id;
-    $query = mysql_query($sql);
-    $post = mysql_fetch_object($query);
+    $query = mysqli_query($db,$sql);
+    $post = mysqli_fetch_object($query);
   ?>
 
 	<h1>编辑博客: <?php echo $post->id ?></h1>
