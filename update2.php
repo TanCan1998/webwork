@@ -17,7 +17,7 @@
         echo mysqli_error($db);
         echo '<br>' . $sql;
     }else{
-        redirect_to("./index.html");
+        redirect_to("./index.php");
     };
 
 ?>

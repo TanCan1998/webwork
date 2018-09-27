@@ -10,8 +10,8 @@
 
     $id = $_GET['id'];
     $sql = 'select * from posts where id = '.$id;
-    $query = mysql_query($sql);
-    $post = mysql_fetch_object($query);
+    $query = mysqli_query($db,$sql);
+    $post = mysqli_fetch_object($query);
   ?>
 
 	<form action="update2.php" method="post">

@@ -18,20 +18,18 @@
     </thead>
     <tbody>
       <?php
-        $posts = Array(
-            Array('id'=>'1','title'=>'第1篇帖子','created_at'=>'2012-1-1  21:01:57'),
-            Array('id'=>'2','title'=>'第2篇帖子','created_at'=>'2012-1-1  21:01:57'),
-            Array('id'=>'3','title'=>'第3篇帖子','created_at'=>'2012-1-1  21:01:57'),
-        );
-        foreach ($posts as $post) {
+
+        require_once'./inc/db.php';
+        $result = mysqli_query($db,"select * from posts");
+        while($row=mysqli_fetch_row($result)) {
       ?>
           <tr>
-            <td><?php echo $post['id'] ?></td>
-            <td><a href="show.php?id=<?php echo $post['id'] ?>"><?php echo $post['title'] ?></a></td>
+            <td><?php echo $row[0] ?></td>
+            <td><a href="show.php?id=<?php echo $row[0] ?>"><?php echo $row[1] ?></a></td>
             <td>2012-10-11  16:26:21</td> 
             <td>
-              <a href="edit.php?id=<?php echo $post['id'] ?>">改</a>
-              <a href="delete.php?id=<?php echo $post['id'] ?>">删</a>
+              <a href="edit.php?id=<?php echo $row[0] ?>">改</a>
+              <a href="delete.php?id=<?php echo $row[0] ?>">删</a>
             </td> 
           </tr> 
         <?php } ?>
